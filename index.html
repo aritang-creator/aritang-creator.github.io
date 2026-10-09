@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chloe Chan — MSc Marketing Candidate</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #FDFBF7;
+      --bg-soft: #FAF6F0;
+      --text: #2C2C2A;
+      --text-muted: #5F5E5A;
+      --text-light: #888780;
+      --coral: #993C1D;
+      --coral-light: #FAECE7;
+      --coral-border: #F5C4B3;
+      --line: #E8E4DE;
+      --white: #FFFFFF;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--coral);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    a:hover {
+      border-bottom-color: var(--coral);
+    }
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(253, 251, 247, 0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 18px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text);
+      border-bottom: none;
+    }
+
+    .nav-logo:hover {
+      border-bottom: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--coral);
+    }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      cursor: pointer;
+      color: var(--text);
+    }
+
+    /* Layout */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 80px 0 64px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 260px;
+      gap: 64px;
+      align-items: end;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      line-height: 1.15;
+      font-weight: 500;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+
+    .hero-title em {
+      color: var(--coral);
+      font-style: normal;
+    }
+
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .hero-meta {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      margin-bottom: 28px;
+    }
+
+    .hero-photo {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--coral-light);
+      border: 1px solid var(--coral-border);
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 24px;
+      border-radius: 100px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      transition: transform 0.15s, box-shadow 0.2s;
+      border: 1px solid transparent;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      border-bottom: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--coral);
+      color: var(--white);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--coral);
+      border-color: var(--coral);
+    }
+
+    /* Editorial sections */
+    .editorial {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 56px;
+      padding: 64px 0;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--coral);
+      margin-bottom: 20px;
+    }
+
+    .column-title {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--coral);
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    /* Work cards */
+    .work-card {
+      background: var(--coral-light);
+      border: 1px solid var(--coral-border);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      margin-bottom: 16px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .work-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(153, 60, 29, 0.08);
+    }
+
+    .work-card h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .work-card .role {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .work-card .impact {
+      font-size: 0.85rem;
+      color: var(--coral);
+      font-weight: 500;
+    }
+
+    .work-card .period {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      margin-top: 8px;
+    }
+
+    /* Sidebar list */
+    .sidebar-group {
+      margin-bottom: 30px;
+    }
+
+    .sidebar-group h4 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .sidebar-group p,
+    .sidebar-group li {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .sidebar-group ul {
+      list-style: none;
+    }
+
+    .sidebar-divider {
+      height: 1px;
+      background: var(--coral-border);
+      margin: 18px 0;
+    }
+
+    /* About section */
+    .about {
+      background: var(--bg-soft);
+      padding: 64px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .about-inner {
+      max-width: 760px;
+    }
+
+    .about-text {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.35rem;
+      line-height: 1.6;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    .about-text em {
+      color: var(--coral);
+      font-style: italic;
+    }
+
+    .about-detail {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    /* Projects */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .project-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      background: var(--white);
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .project-card:hover {
+      border-color: var(--coral-border);
+      transform: translateY(-2px);
+    }
+
+    .project-card h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .project-card .tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--coral);
+      background: var(--coral-light);
+      padding: 4px 10px;
+      border-radius: 100px;
+      margin-bottom: 12px;
+    }
+
+    .project-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Skills */
+    .skills-section {
+      background: var(--bg-soft);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 64px 0;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .skill-category h4 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill-tag {
+      font-size: 0.8rem;
+      padding: 6px 14px;
+      border-radius: 100px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      color: var(--text-muted);
+    }
+
+    /* Leadership */
+    .leadership-list {
+      list-style: none;
+    }
+
+    .leadership-list li {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 20px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 0.9rem;
+    }
+
+    .leadership-list li:last-child {
+      border-bottom: none;
+    }
+
+    .leadership-list .org {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .leadership-list .role {
+      color: var(--text-muted);
+    }
+
+    /* Footer */
+    footer {
+      padding: 56px 0 72px;
+      text-align: center;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-quote {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.25rem;
+      font-style: italic;
+      color: var(--text-light);
+      margin-bottom: 32px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+      font-size: 0.85rem;
+    }
+
+    .footer-copy {
+      font-size: 0.8rem;
+      color: var(--text-light);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .hero-photo {
+        max-width: 280px;
+        margin: 0 auto;
+      }
+
+      .editorial {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .projects-grid,
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-inner {
+        padding: 16px 24px;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: var(--bg);
+        padding: 20px 24px;
+        border-bottom: 1px solid var(--line);
+        gap: 16px;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+
+      .container {
+        padding: 0 24px;
+      }
+
+      .hero {
+        padding: 56px 0 48px;
+      }
+
+      .leadership-list li {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">Chloe Chan</a>
+      <button class="nav-toggle" aria-label="Open menu">☰</button>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#leadership">Leadership</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <h1 class="hero-title">Marketing with <em>data-driven creativity.</em></h1>
+          <p class="hero-subtitle">MSc Marketing Candidate · HKU Business School</p>
+          <p class="hero-meta">Hong Kong SAR · +852 5123 4567 · chloe.chan.marketing@hku.com</p>
+          <div class="hero-actions">
+            <a href="#work" class="btn btn-primary">View selected work</a>
+            <a href="mailto:chloe.chan.marketing@hku.com" class="btn btn-secondary">Get in touch</a>
+          </div>
+        </div>
+        <div class="hero-photo">
+          <img src="chloe-photo.png" alt="Chloe Chan professional headshot" />
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="about" class="about">
+    <div class="container">
+      <div class="about-inner">
+        <p class="about-text">
+          Marketing postgraduate with academic training from The University of Hong Kong and HKUST. Experienced in digital campaigns, consumer research, social media strategy and marketing analytics across beauty, banking and advertising. <em>Skilled at translating customer data into practical brand and growth recommendations.</em>
+        </p>
+        <p class="about-detail">
+          Native Cantonese speaker with professional fluency in English and Mandarin. Currently based in Hong Kong SAR, completing an MSc in Marketing with a focus on digital marketing, consumer insights, marketing analytics, CRM and brand management.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="work" class="editorial">
+    <div class="container" style="display: grid; grid-template-columns: inherit; gap: inherit;">
+      <div class="main-column">
+        <h2 class="column-title">Featured Work</h2>
+
+        <article class="work-card">
+          <h3>L'Oréal Hong Kong</h3>
+          <p class="role">Marketing Intern — Consumer Products Division</p>
+          <p class="impact">1.2M social impressions · +24% above engagement target · 35 micro-influencers seeded</p>
+          <p class="period">June – August 2025 · Hong Kong SAR</p>
+        </article>
+
+        <article class="work-card">
+          <h3>HSBC Hong Kong</h3>
+          <p class="role">Digital Marketing Intern — Wealth and Personal Banking</p>
+          <p class="impact">+11% email open rate · +7% click-through rate · 1,500+ survey responses analysed</p>
+          <p class="period">June – August 2024 · Hong Kong SAR</p>
+        </article>
+
+        <article class="work-card">
+          <h3>Ogilvy Hong Kong</h3>
+          <p class="role">Account Management Intern</p>
+          <p class="impact">Gen Z content proposal adopted into final campaign plan · competitor reviews & social listening</p>
+          <p class="period">June – August 2023 · Hong Kong SAR</p>
+        </article>
+
+        <article class="work-card">
+          <h3>Harbour & Pine Coffee</h3>
+          <p class="role">Part-time Social Media & Community Assistant</p>
+          <p class="impact">+64% Instagram growth (2,800 → 4,600) · 170+ UGC posts · 120+ event attendees</p>
+          <p class="period">September 2022 – May 2023 · Hong Kong SAR</p>
+        </article>
+      </div>
+
+      <aside class="sidebar">
+        <div class="sidebar-group">
+          <h4>Education</h4>
+          <p><strong>HKU — MSc Marketing</strong><br/>Sep 2025 – Aug 2026 (Expected)<br/>Focus: Digital Marketing, Consumer Insights, Analytics, CRM, Brand Management<br/>HKU Business School MSc Entrance Scholarship</p>
+          <div class="sidebar-divider"></div>
+          <p><strong>HKUST — BBA Management; Minor in Marketing</strong><br/>Sep 2021 – Jun 2025 · CGA 3.65/4.30<br/>Dean's List 2022–23 & 2023–24<br/>Exchange: Copenhagen Business School (Jan–May 2024)</p>
+        </div>
+
+        <div class="sidebar-group">
+          <h4>Certifications</h4>
+          <ul>
+            <li>Google Analytics Certification (2025)</li>
+            <li>Meta Certified Digital Marketing Associate (2025)</li>
+            <li>HubSpot Content Marketing (2024)</li>
+          </ul>
+        </div>
+
+        <div class="sidebar-group">
+          <h4>Languages</h4>
+          <p>Cantonese — Native<br/>English — Professional<br/>Mandarin — Professional</p>
+        </div>
+
+        <div class="sidebar-group">
+          <h4>Awards</h4>
+          <p>HKU MSc Entrance Scholarship (2025)<br/>HKUST Marketing Case Competition — First Runner-up (2024)<br/>HKUST Dean's List</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section id="projects" style="padding: 64px 0; border-top: 1px solid var(--line);">
+    <div class="container">
+      <h2 class="section-title">Selected Projects</h2>
+      <div class="projects-grid">
+        <article class="project-card">
+          <span class="tag">Consumer Research</span>
+          <h3>Hong Kong Sustainable Fashion Consumer Study</h3>
+          <p>Led a bilingual survey collecting 420 valid responses. Used SPSS for factor analysis, cluster analysis and regression modelling to identify four consumer segments and recommend differentiated messaging, channels and offers.</p>
+        </article>
+
+        <article class="project-card">
+          <span class="tag">Content Creation</span>
+          <h3>"Hidden Hong Kong" Content Campaign</h3>
+          <p>Built a bilingual neighbourhood and street-photography account to 6,800+ organic followers. Produced 90+ short videos and photo stories exploring local culture.</p>
+        </article>
+
+        <article class="project-card">
+          <span class="tag">Analytics</span>
+          <h3>Gen Z Beauty Trends Dashboard</h3>
+          <p>Cleaned publicly available social engagement data and built a Tableau dashboard comparing beauty topics, formats and engagement patterns. Translated findings into a sample three-month content strategy.</p>
+        </article>
+
+        <article class="project-card">
+          <span class="tag">Academic</span>
+          <h3>Short-form Video & Gen Z Purchase Intention</h3>
+          <p>Final-year project at HKUST examining how short-form video influences purchase intention among Gen Z consumers in Hong Kong.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="skills-section">
+    <div class="container">
+      <h2 class="section-title" style="margin-bottom: 32px;">Toolkit</h2>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h4>Marketing & Analytics</h4>
+          <div class="skill-tags">
+            <span class="skill-tag">Campaign Planning</span>
+            <span class="skill-tag">CRM</span>
+            <span class="skill-tag">A/B Testing</span>
+            <span class="skill-tag">Social Listening</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h4>Data & Platforms</h4>
+          <div class="skill-tags">
+            <span class="skill-tag">GA4</span>
+            <span class="skill-tag">Tableau</span>
+            <span class="skill-tag">Power BI</span>
+            <span class="skill-tag">SPSS</span>
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">Excel</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h4>Creative & Research</h4>
+          <div class="skill-tags">
+            <span class="skill-tag">Figma</span>
+            <span class="skill-tag">Canva</span>
+            <span class="skill-tag">Photoshop</span>
+            <span class="skill-tag">Qualtrics</span>
+            <span class="skill-tag">Photography</span>
+            <span class="skill-tag">Short-form Video</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="leadership" style="padding: 64px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
+    <div class="container">
+      <h2 class="section-title">Leadership & Community</h2>
+      <ul class="leadership-list">
+        <li>
+          <span class="org">HKU Marketing Society</span>
+          <span class="role"><strong>Vice President, External Relations</strong> — Led a six-member team, developed industry partnerships and delivered four events attended by 300+ students.</span>
+        </li>
+        <li>
+          <span class="org">InspiringHK Sports Foundation</span>
+          <span class="role"><strong>Volunteer Communications Assistant</strong> — Photographs community programmes and creates bilingual participant stories and social media content.</span>
+        </li>
+        <li>
+          <span class="org">HKUST Business Students' Union</span>
+          <span class="role"><strong>Marketing Officer</strong> — Managed campaign materials for student events and career workshops, helping increase registrations by 30%.</span>
+        </li>
+        <li>
+          <span class="org">Enactus HKUST</span>
+          <span class="role"><strong>Project Member</strong> — Created Cantonese social media guides and introductory digital-marketing workshops for neighbourhood retailers.</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="container">
+      <p class="footer-quote">"Translating customer data into brand stories."</p>
+      <div class="footer-links">
+        <a href="mailto:chloe.chan.marketing@hku.com">chloe.chan.marketing@hku.com</a>
+        <a href="tel:+85251234567">+852 5123 4567</a>
+        <a href="https://linkedin.com/in/chloe-chan-marketing-demo" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+      <p class="footer-copy">© 2026 Chloe Chan. Personal website built from CV.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const toggle = document.querySelector('.nav-toggle');
+    const links = document.querySelector('.nav-links');
+    toggle.addEventListener('click', () => {
+      links.classList.toggle('open');
+      toggle.textContent = links.classList.contains('open') ? '✕' : '☰';
+    });
+
+    // Close mobile menu on link click
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        links.classList.remove('open');
+        toggle.textContent = '☰';
+      });
+    });
+  </script>
+
+</body>
+</html>
